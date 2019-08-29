@@ -3,19 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku_postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix clinet"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.20",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1"
   }
 }

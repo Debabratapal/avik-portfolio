@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const image = new Schema({
+const imageSchema = new Schema({
   path: String,
-  catagory: {
-    type: Schema.Types.ObjectId,
-    ref: 'ImageCategory'
-  },
   createdAt: Number,
-})
+  category: {type:  Schema.ObjectId, ref: 'ImageCategory'}
+});
+
+module.exports = mongoose.model('Image', imageSchema);
