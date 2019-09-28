@@ -7,37 +7,51 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 
-var corsOptions = {
+const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 
 }
-
+/**
+ * all middlewares
+ */
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname,'public')));
 app.use(cors(corsOptions));
 
-
+/**
+ * database connection
+ */
 mongoose.connect('mongodb://localhost/portfolio', { useNewUrlParser: true });
 
-const auth = require('./routes/auth');
-const image = require('./routes/image');
+/**
+ * all routes register to app
+ */
+const routesPath = path.resolve(__dirname, 'routes');
+const dir = fs.readdirSync(routesPath);
+dir.forEach(i => {
+  let apiName = i.split('.')[0],
+  api = require(`./routes/${apiName}`);  
+  app.use(`/api/${apiName}`, api);
+});
 
-app.use('/api/admin', auth);
-app.use('/api/image', image);
-
+/**
+ * production index.html 
+ * always return index.html in production
+ */
 if(process.env.NODE_ENV ==='production') {
   app.use(express.static('client/build'));
-
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   })
 }
 
+/**
+ * Server start
+ */
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
   console.log(`app is running @${port}`);
-  
 })

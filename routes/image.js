@@ -3,6 +3,7 @@ const Image = require('../models/image');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const ImageCategory = require('../models/image-category');
 
 const mimeMap = {
   'image/jpeg': 'jpeg',
@@ -26,19 +27,52 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage}).single('image');
 
 router.post('/', upload, (req, res) => {
-  let image = new Image({
-    path: req.file.filename,
-    createdAt: Date.now(),
-    category:req.body.category,
+  const category = req.body.category;
+  if(!category) {
+    return Promise.reject("categoty is not there");
+  } 
+  ImageCategory.findOne({id: category})
+  .then(data => {
+    if(data && data.id) {
+      const categoryId = data._id;
+      return categoryId;
+    } else {
+      return Promise.reject("categoty is not there");
+    }
   })
-  image.save().then(data => {
-    res.json({status: true});
+  .then(id => {
+    let image = new Image({
+      path: req.file.filename,
+      createdAt: Date.now(),
+      category: id,
+    })
+    image.save().then(data => {
+      console.log(data);
+      res.json({status: true});
+    })
+  })
+  .catch(err => {
+    res.send(err);
   })
 });
 
-router.get('/', (req, res) => {
-  Image.find().then(data => {
-    res.send(data);
+router.get('/:id', (req, res) => {
+  let index = +req.params.id;
+  index = index -1;
+  ImageCategory.find().lean().then(categories => {
+    if(!index) {
+      index = Math.floor(Math.random()*3);
+    }
+    let category = categories[index]; 
+    return category._id;
+  })
+  .then(category => {
+    Image.find({category: category}).then(data => {
+      res.send(data);
+    })
+  })
+  .catch(err => {
+    res.send(err);
   })
 })
 

@@ -6,4 +6,4 @@ let imageCategory = new Schema({
   name: String,
 })
 
-module.exports = mongoose.model('ImageCategory', imageCategory);
+module.exports = mongoose.model('Imagecategory', imageCategory);
