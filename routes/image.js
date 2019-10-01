@@ -57,6 +57,8 @@ router.post('/', upload, (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+  console.log('came');
+  
   let index = +req.params.id;
   index = index -1;
   ImageCategory.find().lean().then(categories => {
@@ -67,8 +69,13 @@ router.get('/:id', (req, res) => {
     return category._id;
   })
   .then(category => {
+   
     Image.find({category: category}).then(data => {
-      res.send(data);
+      console.log(data);
+      
+      if(Array.isArray(data)) {
+        res.send(data);
+      }
     })
   })
   .catch(err => {
