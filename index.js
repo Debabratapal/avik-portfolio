@@ -6,7 +6,10 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
+const dotenv = require('dotenv');
 
+
+dotenv.config();
 const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 
@@ -40,17 +43,19 @@ dir.forEach(i => {
  * production index.html 
  * always return index.html in production
  */
-if(process.env.NODE_ENV ==='production') {
-  app.use(express.static('client/build'));
+console.log(process.env.NODE_ENV);
+// if(process.env.NODE_ENV ==='production') {
+  
+  app.use(express.static(path.resolve(__dirname, '..','client','build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
   })
-}
+// }
 
 /**
  * Server start
  */
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 80;
 
 app.listen(port, () => {
   console.log(`app is running @${port}`);
