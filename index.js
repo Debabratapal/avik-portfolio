@@ -43,14 +43,14 @@ dir.forEach(i => {
  * production index.html 
  * always return index.html in production
  */
-console.log(process.env.NODE_ENV);
-// if(process.env.NODE_ENV ==='production') {
-  
-  app.use(express.static(path.resolve(__dirname, '..','client','build')));
+
+if(process.env.NODE_ENV ==='production') {
+  const PRODUCTION_REPO_NAME= 'avik-portfolio-client'
+  app.use(express.static(path.resolve(__dirname, '..',PRODUCTION_REPO_NAME,'build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', PRODUCTION_REPO_NAME, 'build', 'index.html'));
   })
-// }
+}
 
 /**
  * Server start
