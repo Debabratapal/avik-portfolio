@@ -45,7 +45,7 @@ dir.forEach(i => {
  */
 
 if(process.env.NODE_ENV ==='production') {
-  const PRODUCTION_REPO_NAME= 'avik-portfolio-client'
+  const PRODUCTION_REPO_NAME= 'avik-portfiolio-client'
   app.use(express.static(path.resolve(__dirname, '..',PRODUCTION_REPO_NAME,'build')));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', PRODUCTION_REPO_NAME, 'build', 'index.html'));
