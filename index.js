@@ -8,8 +8,11 @@ const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 
-
+/***
+ * load env vars
+ */
 dotenv.config();
+
 const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 
@@ -55,7 +58,7 @@ if(process.env.NODE_ENV ==='production') {
 /**
  * Server start
  */
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
   console.log(`app is running @${port}`);

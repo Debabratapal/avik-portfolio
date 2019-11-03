@@ -31,6 +31,7 @@ router.post('/', upload, (req, res) => {
   if(!category) {
     return Promise.reject("categoty is not there");
   } 
+  
   ImageCategory.findOne({id: category})
   .then(data => {
     if(data && data.id) {
