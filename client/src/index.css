@@ -1,0 +1,21 @@
+html{
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+.base-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.base-layout2 {
+  min-height: 100vh;
+}
+
+.md50 {
+  padding-top: 150px;
+}

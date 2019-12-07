@@ -1,0 +1,21 @@
+.image-container {
+  width: 200px !important;
+  height: 200px !important;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  background: #ccc;
+  border-radius: 10px;
+  height: 5px;
+}
+
+.progress-bar .progress{
+  height: 100%;
+  background-color: #8f93d4;
+}

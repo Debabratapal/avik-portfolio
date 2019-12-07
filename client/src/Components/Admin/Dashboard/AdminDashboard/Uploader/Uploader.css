@@ -1,0 +1,47 @@
+.Dropzone {
+  border: 2px dashed #333;
+  text-align: center;
+  padding: 3rem 0;
+  margin-top: 1rem;
+}
+
+.uploader-component {
+  margin: 2rem 0;
+}
+
+
+.borred {
+  border: 1px solid red;
+}
+
+.image-container {
+  width: 280px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+}
+
+.image-container .cross-img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: red;
+  color: #fff;
+  top: -3px;
+  left: -5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.m70 {
+  margin-bottom: 70px;
+} 
+
+.m30{
+  margin: 1rem 0;
+ }
+.img {
+  height: 100%;
+  width: 100%;
+}

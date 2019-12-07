@@ -1,0 +1,10 @@
+.Dropzone {
+  border: 2px dashed #333;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.admin-dashboard {
+  transition: 0.5s;
+}
+

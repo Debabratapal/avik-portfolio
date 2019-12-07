@@ -1,0 +1,13 @@
+
+.port_header {
+  text-align: center;
+}
+
+.port_header h1 {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.port_header p {
+  color: #8a8989;
+}

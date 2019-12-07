@@ -1,0 +1,149 @@
+.wrapper {
+  display: flex;
+  background: #ccc;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.video {
+  width: 100%;
+}
+
+.v-video {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-pause {
+  transition: 0.2s;
+}
+
+.v-video:hover .controls {
+  transform: translateY(0);
+}
+
+.controls {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.7);
+  transform: translateY(100%) translateY(-4px);
+  transition: 0.6s;
+}
+
+.big-buttons .play-container button {
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 20px  0 20px 30px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 18px;
+}
+
+.click-play {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: rgba(0,0,0,0.7);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: vanish 2s;
+}
+
+@keyframes vanish{
+  0%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.click-play button {
+  cursor: pointer;
+  outline: none;
+  height: 2rem;
+  width: 25px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-left: 8px solid #fff;
+  border-right: 8px solid #fff;
+  border-top: transparent;
+  border-bottom: transparent;
+  
+}
+
+
+
+.big-buttons .play-container {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: rgba(0,0,0,0.7);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+} 
+
+
+.orange-bar {
+  width: 100%;
+  background: black;
+  height: 3px;
+  top:0;
+  cursor: pointer;
+}
+
+.orange-juice {
+  width: 100px;
+  background: orangered;
+  height: 3px;
+}
+
+.small-buttons {
+  padding: 10px;
+}
+
+.play-button {
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px  0 10px 15px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 1rem;
+}
+
+.pause-button {
+  border: none;
+  background: none;
+  padding: 0;
+  width: 15px;
+  height: 23px;
+  border-right: 5px solid #fff;
+  border-left: 5px solid #fff;
+  margin-left: 1rem;
+
+}
