@@ -4,14 +4,14 @@ import { Container, Row, Col, Card } from "reactstrap";
 import { api } from '../../utils/config';
 
 export const About = () => (
-  <Fragment>
+  <div className="about">
    <Container>
      <Row>
-       <Col xs="3">
+       <Col xs="12" md="3">
         <img className="img-thumbnail" src={`${api.baseURL}/images/utils/pp.jpg`}/>
        
        </Col>
-       <Col xs="9">
+       <Col xs="12" md="9">
          <Card className="text" body>
            Hi, this is Avik Choudhury. I am a photographer and cinematographer. This website is a part of my work 
            where my latest to starting work is uploaded. The description of all my photos are given here. I always 
@@ -27,6 +27,6 @@ export const About = () => (
 
      </Row>
    </Container>
-  </Fragment>
+  </div>
 )
 

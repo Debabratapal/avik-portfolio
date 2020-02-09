@@ -1,28 +1,60 @@
-import React, { Fragment } from 'react';
-import './PortfolioCard.css';
-import SectionHeader from '../SectionHeader/SectionHeader';
-import {Link} from 'react-router-dom';
-import {api} from '../../utils/config'
-
-export const PortfolioCard = () => (
-  <Fragment>
-    <div className="container portfolio">
-      <SectionHeader
-        header="portfolio"
-        description="Our portfolio is the best way to show our work, you can see here a big range of our work. Check them all and you will find what you are looking for."
-      />
+import React from "react";
+import "./PortfolioCard.css";
+import SectionHeader from "../SectionHeader/SectionHeader";
+import { Link } from "react-router-dom";
+import { api } from "../../utils/config";
+import { Card, CardTitle, CardImg, CardImgOverlay } from "reactstrap";
+export const PortfolioCard = () => {
+  
+  return (
+    <div className="pro-card container">
       <div className="row">
-        {['Portrait','Landscape','B&w'].map((el, i) => (
-          <div className="col" key={el}>
-            <Link to={"/gallery/"+el.toLowerCase()}>
-              <img src={api.baseURL+'/images/card/port'+(i+1)+'.jpg'} alt="port1.jpeg"/>
-              <div className="content">
-                <div className="con2">{el}</div>
-              </div>
-            </Link>
-          </div>
-        ))}  
+        <div className="col-sm-4">
+          <Card inverse>
+            <CardImg
+              width="100%"
+              src={api.baseURL + "/images/card/port" + 1 + ".jpg"}
+              alt="Card image cap"
+            />
+            <CardImgOverlay>
+              <CardTitle>Portrait</CardTitle>
+              <Link to={"/gallery/"+"portrait"}>
+              <div className="view-button">View More</div>
+              </Link>
+            </CardImgOverlay>
+          </Card>
+        </div>
+        <div className="col-sm-4">
+          <Card inverse>
+            <CardImg
+              width="30%"
+              src={api.baseURL + "/images/card/port" + 2 + ".jpg"}
+              alt="Card image cap"
+            />
+            <CardImgOverlay>
+              <CardTitle>Landscape</CardTitle>
+              <Link to={"/gallery/"+"landscape"}>
+              <div className="view-button">View More</div>
+              </Link>
+            </CardImgOverlay>
+          </Card>
+        </div>
+        <div className="col-sm-4">
+          <Card inverse>
+            <CardImg
+              width="30%"
+              src={api.baseURL + "/images/card/port" + 3 + ".jpg"}
+              alt="Card image cap"
+            />
+            <CardImgOverlay>
+              <CardTitle>Portrait</CardTitle>
+              <Link to={"/gallery/"+"portrait"}>
+                <div className="view-button">View More</div>
+              </Link>
+            </CardImgOverlay>
+          </Card>
+        </div>
       </div>
     </div>
-  </Fragment >
-)
+  );
+};

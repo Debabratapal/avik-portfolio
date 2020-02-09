@@ -35,8 +35,8 @@ class ProgressiveImage extends Component {
       return {
         transition: '0.5s filter linear',
         filter: `${loading ? 'blur(50px)' : ''}`,
-        height: '100vh',
         width:'100%',
+        objectFit: 'cover'
       }
     }
   

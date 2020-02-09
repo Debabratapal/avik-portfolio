@@ -3,6 +3,8 @@ const Image = require('../models/image');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const im = require('imagemagick');
+const exac = require('child_process').exec;
 
 const mimeMap = {
   'image/jpeg': 'jpeg',
@@ -30,15 +32,18 @@ router.post('/', upload, (req, res) => {
   if(!category) {
     return res.send("categoty is not there");
   } 
+  let imagePath = '/images/uploads/'+req.file.filename;
   let image = new Image({
-    path: req.file.filename,
+    path: imagePath,
     createdAt: Date.now(),
     category: category,
   })
   image.save().then(data => {
     console.log(data);
     res.json({status: true});
+    reduceImageSize(path.join(__dirname, imagePath));
   })
+
   .catch(err => {
     res.send(err);
   })
@@ -56,6 +61,20 @@ router.get('/:id', (req, res) => {
     res.send(err);
   })
 })
+
+const reduceImageSize = (image) => {
+  const convertArgs = [image, '-resize', 300+'x'+300, image];
+  const logoArgs = [
+    'composite', 
+    '-disolve', '50%',
+    '-gravity', 'SouthEast',
+    '-quality'
+  ]
+  im.convert(convertArgs, (err, md) => {
+
+  })
+
+}
 
 
 module.exports = router;
