@@ -1,60 +1,58 @@
 import React from "react";
 import "./PortfolioCard.css";
-import SectionHeader from "../SectionHeader/SectionHeader";
 import { Link } from "react-router-dom";
-import { api } from "../../utils/config";
 import { Card, CardTitle, CardImg, CardImgOverlay } from "reactstrap";
+import { Images } from "../../assets/images";
 export const PortfolioCard = () => {
-  
-  return (
-    <div className="pro-card container">
-      <div className="row">
-        <div className="col-sm-4">
-          <Card inverse>
-            <CardImg
-              width="100%"
-              src={api.baseURL + "/images/card/port" + 1 + ".jpg"}
-              alt="Card image cap"
-            />
-            <CardImgOverlay>
-              <CardTitle>Portrait</CardTitle>
-              <Link to={"/gallery/"+"portrait"}>
-              <div className="view-button">View More</div>
-              </Link>
-            </CardImgOverlay>
-          </Card>
+    return (
+        <div className="pro-card container">
+            <div className="row">
+                <div className="col-sm-4">
+                    <Link to={"/gallery/portrait"}>
+                        <Card inverse>
+                            <CardImg
+                                width="100%"
+                                src={Images.card1}
+                                alt="Card image cap"
+                            />
+                            <CardImgOverlay>
+                                <CardTitle>Portrait</CardTitle>
+                                <div className="view-button">View More</div>
+                            </CardImgOverlay>
+                        </Card>
+                    </Link>
+                </div>
+                <div className="col-sm-4">
+                    <Link to={"/gallery/landscape"}>
+                        <Card inverse>
+                            <CardImg
+                                width="30%"
+                                src={Images.card2}
+                                alt="Card image cap"
+                            />
+                            <CardImgOverlay>
+                                <CardTitle>Landscape</CardTitle>
+                                <div className="view-button">View More</div>
+                            </CardImgOverlay>
+                        </Card>
+                    </Link>
+                </div>
+                <div className="col-sm-4">
+                    <Link to={"/gallery/portrait"}>
+                        <Card inverse>
+                            <CardImg
+                                width="30%"
+                                src={Images.card3}
+                                alt="Card image cap"
+                            />
+                            <CardImgOverlay>
+                                <CardTitle>Portrait</CardTitle>
+                                <div className="view-button">View More</div>
+                            </CardImgOverlay>
+                        </Card>
+                    </Link>
+                </div>
+            </div>
         </div>
-        <div className="col-sm-4">
-          <Card inverse>
-            <CardImg
-              width="30%"
-              src={api.baseURL + "/images/card/port" + 2 + ".jpg"}
-              alt="Card image cap"
-            />
-            <CardImgOverlay>
-              <CardTitle>Landscape</CardTitle>
-              <Link to={"/gallery/"+"landscape"}>
-              <div className="view-button">View More</div>
-              </Link>
-            </CardImgOverlay>
-          </Card>
-        </div>
-        <div className="col-sm-4">
-          <Card inverse>
-            <CardImg
-              width="30%"
-              src={api.baseURL + "/images/card/port" + 3 + ".jpg"}
-              alt="Card image cap"
-            />
-            <CardImgOverlay>
-              <CardTitle>Portrait</CardTitle>
-              <Link to={"/gallery/"+"portrait"}>
-                <div className="view-button">View More</div>
-              </Link>
-            </CardImgOverlay>
-          </Card>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };

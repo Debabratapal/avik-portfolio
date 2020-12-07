@@ -1,8 +1,9 @@
-import React from 'react';
-import Layout  from '../Hoc/Layout';
+import React from "react";
+import Layout from "../Hoc/Layout";
 
-export const GalleryLayout = props => (
-    <Layout>
-        {props.children}
-    </Layout>
-)
+export const GalleryLayout = props => {
+    if (props.openGallery) {
+        return <>{props.children}</>;
+    }
+    return <Layout>{props.children}</Layout>;
+};

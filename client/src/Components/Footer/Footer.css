@@ -1,30 +1,31 @@
 .footer {
-  background: rgba(0, 0,0,0.6);
-  color: #fff;
-  padding: 3rem 0 3rem 0;
-  text-transform: capitalize;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 3rem 0 3rem 0;
+    text-transform: capitalize;
+    margin-top: 30px;
 }
 
 .footer .inner-con {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer .inner-con .right i {
-  font-size: 25px;
-  margin: 2rem 1rem;
+    font-size: 25px;
+    margin: 2rem 1rem;
 }
 
 .footer li {
-  list-style: none;
+    list-style: none;
 }
 
 .footer a {
-  color: white;
+    color: white;
 }
 
-@media (max-width:475px) {
-  .left h3 {
-    font-size: 18px;
-  }
+@media (max-width: 475px) {
+    .left h3 {
+        font-size: 18px;
+    }
 }

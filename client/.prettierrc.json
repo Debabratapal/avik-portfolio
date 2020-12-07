@@ -1,0 +1,7 @@
+{
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "arrowParens": "avoid",
+    "printWidth": 80,
+    "spaceBeforeFunctionParen": false
+}

@@ -1,20 +1,20 @@
 .navbar-nav {
-  width: 100%;
-  justify-content: flex-end;
+    width: 100%;
+    justify-content: flex-end;
 }
 
-.bg-dark {
-  background-color: rgba(0,0,0,0.6) !important;
-}
+/* .bg-dark {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+} */
 
 .port-link {
-  color: white !important;
-  font-size: 22px;
-  margin-left: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+    color: white !important;
+    font-size: 22px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .active {
-  color: orange !important;
+    color: orange !important;
 }

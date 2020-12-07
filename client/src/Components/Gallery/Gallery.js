@@ -1,46 +1,74 @@
-import React from 'react';
-import './Gallery.css';
-import axios from '../../utils/axios';
-import {api} from '../../utils/config';
-import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
+import React from "react";
+import "./Gallery.css";
+import ProgressiveImage from "../ProgressiveImage/ProgressiveImage";
+import { Portfolio } from "../../assets/portfolio";
 
 class Gallery extends React.Component {
-  state = {
-    images: [],
-  }
+    state = {
+        images: [[], [], []]
+    };
+    id = null;
 
-  componentDidMount() {
-    const id = this.props.match.params.id;
-    axios.get(`/image/${id}`).then(data => {
-      this.setState({images: data.data});
-    })
-  }
+    componentDidMount() {
+        this.loadImages();
+    }
 
-  render() {
-    const {images} = this.state;
-    
-    return (
-      <div className="container">
-        <div className="row">
-        {images.length?
-          images.map((el, i) => (
-            <div className="col-md-4 img-gal">
-              <ProgressiveImage
-                preview={api.baseURL+'/images/uploads/'+el.path}
-                image={api.baseURL+'/images/uploads/'+el.path}
-                key={i} 
-                alt={el.path} />
+    loadImages = id => {
+        this.id = id || this.props.match.params.id;
+        const ImagesObj = Portfolio[this.id];
+        let stateImage = [[], [], []];
+        let images = [];
+        if (ImagesObj && Object.keys(ImagesObj).length) {
+            for (let key in ImagesObj) {
+                images.push(key);
+            }
+            for (let i = 0; i < images.length; i++) {
+                let index = i % 3;
+                stateImage[index].push({
+                    image: images[i],
+                    index: i
+                });
+            }
+        }
+        this.setState({ images: stateImage });
+    };
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if (this.props.match.params.id !== nextProps.match.params.id) {
+            this.loadImages(nextProps.match.params.id);
+        }
+    }
+
+    openGallery = index => {
+        this.props.openGallery(this.id, index);
+    };
+
+    render() {
+        const { images } = this.state;
+
+        return (
+            <div className="container-fluid">
+                {images.map((image, index) => (
+                    <div className="col" key={index}>
+                        {image.map((el, i) => (
+                            <div
+                                key={i}
+                                className="col-md-4 img-gal"
+                                onClick={() => this.openGallery(el.index)}
+                            >
+                                <ProgressiveImage
+                                    preview={Portfolio[this.id][el.image]}
+                                    image={Portfolio[this.id][el.image]}
+                                    key={i}
+                                    alt={el.path}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                ))}
             </div>
-          ))
-          :
-          <div className="no-image">
-            <p>No Image Available</p>
-          </div>
-          }
-        </div>
-      </div>
-    )
-  }
+        );
+    }
 }
 
 export default Gallery;

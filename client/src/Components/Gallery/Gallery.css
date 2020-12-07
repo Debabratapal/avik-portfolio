@@ -1,14 +1,25 @@
 .img-gal {
-  height: 250px;
+    /* margin-bottom: 30px; */
+    margin-top: 30px;
 }
 
 .img-gal img {
-  height: 100%;
+    cursor: pointer;
+}
+.container-fluid {
+    display: flex;
+}
+.container-fluid .column {
+    display: flex;
+    flex-direction: column;
+}
+.container-fluid .col-md-4 {
+    max-width: unset;
 }
 
 .no-image {
-  font-size: 30px;
-  font-weight: bold;
-  width: 100%;
-  text-align: center !important;
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center !important;
 }
